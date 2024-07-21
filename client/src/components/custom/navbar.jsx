@@ -13,7 +13,7 @@ import NewTransaction from "./newTransaction";
 const Navbar = () => {
   return (
     <>
-      <nav className="fixed bottom-0 left-auto w-full h-32 flex justify-center items-center">
+      <nav className="fixed bottom-0 left-auto w-full h-32 flex justify-center items-end sm:items-center">
         <div className="outine px-3 py-2 h-20 w-full max-w-[450px] sm:w-[450px]  bg-black dark:bg-neutral-600 dark:bg-opacity-40 bg-opacity-80 rounded-xl overflow-hidden">
           <div className="inner w-full h-full flex gap-2 sm:gap-6">
             <div className="icon w-16 h-full bg-black rounded-xl">

@@ -61,7 +61,7 @@ const Home = () => {
         </div>
         <Button
           variant="outline"
-          className="bg-teal-200"
+          className="bg-teal-200 dark:text-black"
           onClick={handleResetData}
         >
           Reset Default Data
