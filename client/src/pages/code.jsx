@@ -11,7 +11,10 @@ const Code = () => {
           <Link className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <a href="https://github.com/piyushjha03" target="_blank">
+          <a
+            href="https://github.com/Piyushjha03/codolio-assignment"
+            target="_blank"
+          >
             <div className="text-2xl font-bold">Go to github</div>
           </a>
         </CardContent>

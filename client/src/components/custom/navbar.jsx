@@ -19,7 +19,7 @@ const Navbar = () => {
             <div className="icon w-16 h-full bg-black rounded-xl">
               <img src="/wallet2.gif" alt="" className="h-full" />
             </div>
-            <div className="option bg-neutral-700 flex-1 rounded-xl flex gap-3 sm:gap-8 items-center justify-center">
+            <div className="option bg-neutral-700 flex-1 rounded-xl px-4 flex gap-2 sm:gap-8 items-center justify-between">
               <NavLink to="/" className="">
                 <div className="icon w-8 h-8 flex relative justify-center items-center rounded-full">
                   <House className="text-neutral-200" />
