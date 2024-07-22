@@ -51,7 +51,7 @@ const EditTransaction = (props) => {
     if (
       type === "" ||
       !currency ||
-      amount === "" ||
+      !amount ||
       title === "" ||
       category === "" ||
       !dateTime ||
@@ -129,7 +129,7 @@ const EditTransaction = (props) => {
                 id="amount"
                 placeholder="Enter amount"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(Number(e.target.value))}
               />
             </div>
             <div className="flex flex-col space-y-1.5">
