@@ -37,7 +37,7 @@ import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 const NewTransaction = () => {
   const [type, setType] = useState("");
   const [currency, setCurrency] = useState(null);
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(null);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [dateTime, setDateTime] = useState(new Date());
@@ -50,7 +50,7 @@ const NewTransaction = () => {
     if (
       type === "" ||
       !currency ||
-      amount === "" ||
+      !amount ||
       title === "" ||
       category === "" ||
       !dateTime ||
@@ -141,7 +141,7 @@ const NewTransaction = () => {
                 id="amount"
                 placeholder="Enter the Amount"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(Number(e.target.value))}
               />
             </div>
             <div className="flex flex-col space-y-1.5">

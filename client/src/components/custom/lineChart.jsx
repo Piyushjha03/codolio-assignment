@@ -1,7 +1,5 @@
-import { transactionData } from "../../../dummydata";
-
+import { transactionData } from "../../../dummydata"; // Assuming this import is correct
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
-
 import {
   Card,
   CardContent,
@@ -16,22 +14,29 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { TrendingUp } from "lucide-react";
-import { useTransactions } from "../../utils/transactionState";
+import { useTransactions } from "../../utils/transactionState"; // Assuming this hook is correctly defined elsewhere
+import { useEffect, useMemo } from "react";
 
 export function LineChartComponent() {
-  const transaction = useTransactions((state) => state.allTransactions);
+  const transactions = useTransactions((state) => state.allTransactions).sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
 
-  let totalIncome = 0;
-  let totalExpense = 0;
+  const { totalIncome, totalExpense, Balance } = useMemo(() => {
+    let totalIncome = 0;
+    let totalExpense = 0;
 
-  const Balance = transaction.reduce((acc, curr) => {
-    if (curr.type === "Income") {
-      totalIncome += curr.amount;
-    } else {
-      totalExpense += curr.amount;
-    }
-    return totalIncome - totalExpense;
-  }, 0);
+    const Balance = transactions.reduce((acc, curr) => {
+      if (curr.type === "Income") {
+        totalIncome += curr.amount;
+      } else {
+        totalExpense += curr.amount;
+      }
+      return totalIncome - totalExpense;
+    }, 0);
+
+    return { totalIncome, totalExpense, Balance };
+  }, [transactions]);
 
   const dataForChart = [
     {
@@ -50,11 +55,14 @@ export function LineChartComponent() {
       color: "hsl(var(--chart-2))",
     },
   };
+  console.log("====================================");
+  console.log(transactions);
+  console.log("====================================");
 
   return (
     <Card className="flex flex-col cursor-pointer hover:text-green-500">
       <CardHeader className="items-center pb-0">
-        <CardTitle className="flex gap-2 ">
+        <CardTitle className="flex gap-2">
           Visualize Your Transactions
           <TrendingUp className="h-4 w-4" />
         </CardTitle>
@@ -98,6 +106,7 @@ export function LineChartComponent() {
                       </text>
                     );
                   }
+                  return null; // Ensure a default return value
                 }}
               />
             </PolarRadiusAxis>
